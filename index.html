@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BMI Calculator</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="wrap">
+      <div class="panel" aria-labelledby="title">
+        <h1 id="title">BMI Calculator</h1>
+
+        <div class="tabs" role="tablist">
+          <div class="tab active" id="tab-us">US Units</div>
+          <div class="tab" id="tab-metric">Metric Units</div>
+          <div class="tab" id="tab-other">Other Units</div>
+        </div>
+
+        <label>Age</label>
+        <input id="age" type="number" min="2" max="120" value="27">
+
+        <label>Gender</label>
+        <div class="gender-wrap">
+          <div class="gender-btn active" id="gender-male">Male</div>
+          <div class="gender-btn" id="gender-female">Female</div>
+        </div>
+
+      
+        <div id="panel-us">
+          <label>Height</label>
+          <div class="row">
+            <input id="ft" class="xsmall" type="number" value="5" min="3" max="8">
+            <input id="inch" class="xsmall" type="number" value="6" min="0" max="11">
+          </div>
+          <label>Weight (lbs)</label>
+          <input id="lbs" type="number" value="180">
+        </div>
+
+        
+        <div id="panel-metric" style="display:none">
+          <label>Height (cm)</label>
+          <input id="cm" type="number" value="180">
+          <label>Weight (kg)</label>
+          <input id="kg" type="number" value="95">
+        </div>
+
+       
+        <div id="panel-other" style="display:none">
+          <label>Height (m)</label>
+          <input id="m" type="number" step="0.01" placeholder="1.80">
+          <label>Weight (kg)</label>
+          <input id="kg2" type="number" placeholder="78">
+        </div>
+
+        <div class="actions">
+          <button class="calc" id="calcBtn">Calculate</button>
+          <button class="clear" id="clearBtn" type="button">Clear</button>
+        </div>
+
+        <div class="hint">Tip: Use Metric for best precision. BMI = weight(kg) / height(m)<sup>2</sup>.</div>
+      </div>
+
+      
+      <div class="results" aria-live="polite">
+        <h1 id="title">Result</h1>
+        <div class="gauge-wrap">
+          <div class="gauge-holder"><canvas id="gauge" aria-label="BMI gauge"></canvas></div>
+          <div class="bmi-large" id="bmiValue">--</div>
+          <div class="category" id="bmiCat">—</div>
+
+          <div class="legend">
+            <div class="item"><span class="sw" style="background:var(--under)"></span>Underweight</div>
+            <div class="item"><span class="sw" style="background:var(--normal)"></span>Normal</div>
+            <div class="item"><span class="sw" style="background:var(--over)"></span>Overweight</div>
+            <div class="item"><span class="sw" style="background:var(--obese)"></span>Obese</div>
+          </div>
+        </div>
+
+        <div class="summary">
+          <div class="row"><div>Healthy BMI range</div><div><strong>18.5 – 25</strong></div></div>
+          <div class="row"><div>Healthy weight for height</div><div id="healthyRange">—</div></div>
+          <div class="row"><div>Change to reach BMI 25</div><div id="to25">—</div></div>
+          <div class="row"><div>BMI Prime</div><div id="prime">—</div></div>
+          <div class="row"><div>Ponderal Index</div><div id="ponderal">—</div></div>
+        </div>
+
+        <footer class="note">BMI Prime Formula -> BMI prime = BMI/25</footer>
+        <footer class="note">@ 2025 Kuldeep Rajpoot. All rights reserved.</footer>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
